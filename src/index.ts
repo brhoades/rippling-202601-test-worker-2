@@ -21,7 +21,7 @@ export default {
 
       // Since we are hard coding the Durable Object ID by providing the constant name 'foo',
       // all requests to this Worker will be sent to the same Durable Object instance.
-      let stub = env.WEBSOCKET_HIBERNATION_SERVER.getByName("foo");
+      let stub = env.MY_DURABLE_OBJECT.getByName("foo");
 
       return stub.fetch(request);
     }
@@ -40,7 +40,7 @@ export default {
 };
 
 // Durable Object
-export class WebSocketHibernationServer extends DurableObject {
+export class MyDurableObject extends DurableObject {
   // Keeps track of all WebSocket connections
   // When the DO hibernates, gets reconstructed in the constructor
   sessions: Map<WebSocket, { [key: string]: string }>;
