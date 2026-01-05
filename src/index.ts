@@ -82,6 +82,8 @@ export class MyDurableObject extends DurableObject {
     // WebSocket receives a message, the runtime will recreate the Durable Object
     // (run the `constructor`) and deliver the message to the appropriate handler.
     this.ctx.acceptWebSocket(server);
+    const ip = request.headers.get("CF-Connecting-IP") || 'No IP';
+    console.log(`websocket connect from '${ip}'`);
 
     // Generate a random UUID for the session.
     const id = crypto.randomUUID();
