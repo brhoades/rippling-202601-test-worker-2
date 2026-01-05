@@ -127,5 +127,8 @@ export class MyDurableObject extends DurableObject {
     // If the client closes the connection, the runtime will invoke the webSocketClose() handler.
     this.sessions.delete(ws);
     ws.close(code, 'Durable Object is closing WebSocket');
+
+    console.log(`websocket close clean='${wasClean}, code=${code}, reason=${reason}`);
+
   }
 }
